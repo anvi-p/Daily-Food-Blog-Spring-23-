@@ -1,0 +1,26 @@
+ul{
+    list-style: none;
+}
+.navbar{
+    background-color: #C1AAC0;
+}
+.navbar-brand navbar{
+    color: whitesmoke;
+}
+.nav-item{
+    background-color: #C9DDFF;
+    margin: 5px;
+    color: black;
+    border-radius: 10px;
+}
+.form-btn{
+    background-color: #C9DDFF;
+    border: #C9DDFF;
+    color: black;
+}
+.card .card-header{
+    background-color: #EEE3AB;
+}
+.card-header{
+    background-color: #C9DDFF;
+}

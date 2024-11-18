@@ -1,0 +1,38 @@
+{% extends "header.html" %}
+{% block content %}
+<div class="row">
+    <div class="col">
+      {% if error_msg %}
+        <b>{{ error_msg }}</b>
+      {% endif %}
+    </div>
+</div>
+
+{% if user %}
+<div class="row">
+    <div class="col">
+        <h1>{{user.username}}'s posts</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <h5>There are a total of {{count}} post(s).</h5>
+    </br>
+        <ul class="media-list">
+            {% for post in posts %}
+            <li class="media">
+              <div class="media-body">
+                <span class="float-right">
+                  <h6>{{ post.date }}</h6>
+                </span>
+                  <h5 class="mt-0"><a href="{{ url_for('posts.post_detail', post_id=post.post_id) }}">{{ post.post_title }}</a></h5>                
+                  <p> Meal types: {{ post.meal_type }} & {{ post.home_rest }} </p>
+              </div>
+            </li>
+            {% endfor %}
+          </ul>
+    </div>
+</div>
+{% endif %}
+
+{% endblock %}

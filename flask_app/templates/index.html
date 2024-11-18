@@ -1,0 +1,32 @@
+{% extends "header.html" %}
+{% block content %}
+{% if error_msg %}
+    <p>{{ error_msg }}</p>
+{% endif %}
+
+{% if current_user.is_authenticated %}
+<div class="row">
+    <div class="col">
+        <h2> View recent meals</h2>
+    </div>
+</div>
+{% else %}
+<div class="row">
+    <div class="col">
+        <h2> View recent meals <small>(Login to add your own posts)</small> </h2>
+    </div>
+</div>
+{% endif %}
+</br>
+<div class="container-fluid">
+    {% for result in results %}
+        <span class="float-right">
+            <h6>{{ result.date }}</h6>
+            <p> Posted by: <a href="{{ url_for('posts.user_posts', username=result.commenter.username) }}"><strong>@{{ result.commenter.username }}</strong></a></p>
+        </span>
+        <h5 class="mt-0"><a href="{{ url_for('posts.post_detail', post_id=result.post_id) }}">{{ result.post_title }}</a></h5>
+        <p> Meal types: {{ result.meal_type }} & {{ result.home_rest }} </p>
+    {% endfor %}
+</div>
+
+{% endblock %}
